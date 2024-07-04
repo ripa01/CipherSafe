@@ -37,24 +37,24 @@ export default function Home() {
 
   return (
     <>
-      <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+      <div class="absolute top-0 z-[-2] h-screen w-screen rotate-180 transform bg-indigo-200 bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]"></div>
       <div className="font-poppins w-screen flex flex-col">
         <div id="body" className="w-full items-center justify-center">
           <div className="justify-around items-center gap-8 mb-16">
-            <div className="h-full flex flex-col justify-center bg-indigo-100 rounded-2xl px-11 py-8 shadow-xl border-2 border-black">
+            <div className="h-full flex flex-col justify-center  px-11 py-8 ">
               <form method="POST" onSubmit={savePass}>
                 <div className="flex flex-col justify-center items-center gap-4">
-                  <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                    Cipher<span className="text-blue-500 font-thin">Safe</span>
+                  <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">
+                    Cipher<span className="text-blue-900 font-serif">Safe</span>
                   </span>
 
-                  <p className="text-gray-500 text-sm text-center px-8 pb-2">
+                  <p className="text-gray-900 text-sm text-center px-8 pb-2">
                     Protect your password!
                   </p>
                   <div className="w-4/5 flex flex-row gap-4 justify-center items-center">
                     <input
                       type="text"
-                      className="w-full text-sm h-10 rounded-2xl p-4 bg-blue-50 ring-2 ring-violet-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full text-sm h-10 rounded-2xl p-4 bg-blue-50 ring-2 ring-violet-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       placeholder="Website URL"
                       value={form.site}
                       onChange={handleChange}
@@ -65,7 +65,7 @@ export default function Home() {
                   <div className="w-4/5 flex flex-row gap-4 justify-center items-center">
                     <input
                       type="text"
-                      className="w-2/5 text-sm h-10 rounded-2xl p-4 bg-blue-50 ring-2 ring-violet-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-2/5 text-sm h-10 rounded-2xl p-4 bg-blue-50 ring-2 ring-violet-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       placeholder="Username"
                       value={form.username}
                       onChange={handleChange}
@@ -76,7 +76,7 @@ export default function Home() {
                       <input
                         ref={inputRef}
                         type="password"
-                        className="w-full text-sm h-10 rounded-2xl p-4 bg-blue-50 ring-2 ring-violet-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                        className="w-full text-sm h-10 rounded-2xl p-4 bg-blue-50 ring-2 ring-violet-900 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="Password"
                         value={form.pass}
                         onChange={handleChange}
@@ -118,10 +118,11 @@ export default function Home() {
 
 
 
-<div class="flex justify-center items-center overflow-x-auto shadow-md sm:rounded-lg">
+<div class="flex flex-col justify-center items-center overflow-x-auto sm:rounded-lg">
+  <h1 className="font-extrabold text-2xl mb-5 mt-3 text-blue-900">Your Passwords</h1>
   {passwordArray.length === 0 && <div className="text-white">No passwords to show </div>}
-  {passwordArray.length != 0 &&  <table class="w-4/5 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-2xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  {passwordArray.length != 0 &&  <table class="w-4/5 text-sm text-left rtl:text-right text-blue-900 dark:text-gray-400">
+        <thead class="text-2xs text-violet-100  uppercase bg-blue-900 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     Website name
@@ -140,8 +141,8 @@ export default function Home() {
         </thead>
         <tbody>
           {passwordArray.map((item)=>{
-           return <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+           return <tr class="bg-indigo-200 border-b dark:bg-gray-800 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap dark:text-white">
                 <a href={item.site} target="_blank">{item.site}</a>
             </th>
             <td class="px-6 py-4">
