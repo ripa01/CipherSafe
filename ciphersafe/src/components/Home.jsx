@@ -1,32 +1,48 @@
-import React, { useState } from "react";
-import { useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export default function Home() {
-  const ref = useRef();
+  const inputRef = useRef();
+  const imgRef = useRef();
   const [form, setForm] = useState({ site: "", username: "", pass: "" });
+  const [passwordArray, setPasswordArray] = useState([]);
+
   const showpass = () => {
-    if (ref.current.src.includes("open.svg")) {
-      ref.current.src = "close.svg";
+    if (imgRef.current.src.includes("open.svg")) {
+      imgRef.current.src = "close.svg";
+      inputRef.current.type = "password";
     } else {
-      ref.current.src = "open.svg";
+      imgRef.current.src = "open.svg";
+      inputRef.current.type = "text";
     }
   };
-  const savePass = () =>{
-    console.log(form)
 
-  }
+  useEffect(() => {
+    let passwords = localStorage.getItem("pass");
+    if (passwords) {
+      setPasswordArray(JSON.parse(passwords));
+    }
+  }, []);
+
+  const savePass = (e) => {
+    e.preventDefault();
+    const newPasswordArray = [...passwordArray, form];
+    setPasswordArray(newPasswordArray);
+    localStorage.setItem("pass", JSON.stringify(newPasswordArray));
+    console.log(newPasswordArray);
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
   return (
     <>
       <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
       <div className="font-poppins w-screen flex flex-col">
-        <div id="body" className=" w-full items-center justify-center">
+        <div id="body" className="w-full items-center justify-center">
           <div className="justify-around items-center gap-8 mb-16">
             <div className="h-full flex flex-col justify-center bg-indigo-100 rounded-2xl px-11 py-8 shadow-xl border-2 border-black">
-              {/* <form method="POST"> */}
+              <form method="POST" onSubmit={savePass}>
                 <div className="flex flex-col justify-center items-center gap-4">
                   <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                     Cipher<span className="text-blue-500 font-thin">Safe</span>
@@ -58,6 +74,7 @@ export default function Home() {
                     />
                     <div className="relative w-2/5">
                       <input
+                        ref={inputRef}
                         type="password"
                         className="w-full text-sm h-10 rounded-2xl p-4 bg-blue-50 ring-2 ring-violet-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="Password"
@@ -71,10 +88,11 @@ export default function Home() {
                         onClick={showpass}
                       >
                         <img
-                          ref={ref}
+                          ref={imgRef}
                           className="p-1"
                           width={30}
                           src="close.svg"
+                          alt="Toggle Password Visibility"
                         />
                       </span>
                     </div>
@@ -83,11 +101,9 @@ export default function Home() {
                   <div className="w-4/5 flex flex-row gap-4 justify-center items-center"></div>
 
                   <button
-                    
-                    onClick={savePass}
+                    type="submit"
                     className="bg-blue-600 flex justify-center items-center mt-1 h-12 w-1/4 rounded-2xl text-primary font-bold hover:bg-primary hover:bg-blue-400 border-primary border-2"
                   >
-                   
                     <lord-icon
                       src="https://cdn.lordicon.com/jgnvfzqg.json"
                       trigger="hover"
@@ -95,7 +111,7 @@ export default function Home() {
                     Save
                   </button>
                 </div>
-              {/* </form> */}
+              </form>
             </div>
           </div>
         </div>
