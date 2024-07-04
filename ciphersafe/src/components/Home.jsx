@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuidv4 } from "uuid";
+import Delete from "./Delete"
 
 export default function Home() {
   const inputRef = useRef();
@@ -34,12 +35,25 @@ export default function Home() {
     console.log(newPasswordArray);
   };
 
-  const deletePass = (e) => {
-    // e.preventDefault();
-    // const newPasswordArray = [...passwordArray, {...form,id : uuidv4()}];
-    // setPasswordArray(newPasswordArray);
-    // localStorage.setItem("pass", JSON.stringify(newPasswordArray));
-    // console.log(newPasswordArray);
+  const deletePass = (id) => {
+  
+    setPasswordArray(passwordArray.filter(item => item.id !== id));
+    localStorage.setItem("pass", JSON.stringify(passwordArray.filter(item => item.id !== id)));
+   
+  };
+
+  const openDeleteModal = (id) => {
+    setDeleteId(id);
+    setShowModal(true);
+  };
+
+  
+  const editPass = (id) => {
+   
+    setForm(passwordArray.filter(item => item.id === id)[0]);
+    setPasswordArray(passwordArray.filter(item => item.id !== id));
+
+    
   };
 
   const handleChange = (e) => {
@@ -208,14 +222,14 @@ export default function Home() {
                             />
                           </td>
                           <td className="px-8 py-0 ">
-                            <span className="cursor-pointer">
+                            <span className="cursor-pointer"   onClick={()=>{deletePass(item.id)}}>
                               <lord-icon
                                 src="https://cdn.lordicon.com/skkahier.json"
                                 trigger="hover"
                               ></lord-icon>
                             </span>
 
-                            <span className="cursor-pointer">
+                            <span className="cursor-pointer" onClick={()=>{editPass(item.id)}}>
                               <img src="editt.gif" className="h-6" alt="Edit" />
                             </span>
                           </td>
