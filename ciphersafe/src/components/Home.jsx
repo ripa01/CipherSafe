@@ -87,7 +87,7 @@ export default function Home() {
         transition="Bounce"
       />
       <div className="absolute top-0 z-[-2] h-screen w-screen rotate-180 transform bg-indigo-200 bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]"></div>
-      <div className="font-poppins min-h-[85vh] flex flex-col">
+      <div className="font-poppins min-h-[85vh] flex flex-col  bg-indigo-200 bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]">
         <div id="body" className="w-full items-center justify-center">
           <div className="justify-around items-center gap-8 mb-16">
             <div className="h-full flex flex-col justify-center  px-11 py-8 ">
@@ -172,7 +172,7 @@ export default function Home() {
                   <div className="text-white">No passwords to show</div>
                 )}
                 {passwordArray.length !== 0 && (
-                  <table className="w-4/5 text-sm text-left rtl:text-right text-blue-900 dark:text-gray-400">
+                  <table className="w-4/5 text-sm text-left rtl:text-right text-blue-900 dark:text-gray-400 sm:w-3/5">
                     <thead className="text-2xs text-violet-100 uppercase bg-blue-900 dark:bg-gray-700 dark:text-gray-400">
                       <tr>
                         <th scope="col" className="px-6 py-3">
