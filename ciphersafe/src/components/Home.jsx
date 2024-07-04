@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <>
       <div class="absolute top-0 z-[-2] h-screen w-screen rotate-180 transform bg-indigo-200 bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]"></div>
-      <div className="font-poppins w-screen flex flex-col">
+      <div className="font-poppins min-h-[90vh] flex flex-col">
         <div id="body" className="w-full items-center justify-center">
           <div className="justify-around items-center gap-8 mb-16">
             <div className="h-full flex flex-col justify-center  px-11 py-8 ">
