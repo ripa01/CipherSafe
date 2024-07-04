@@ -16,10 +16,11 @@ export default function Navbar() {
         <div>
           <button
             type="button"
-            className="flex max-w-xs items-center rounded-full bg-white py-1 px-1 gap-1 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            className="flex max-w-xs items-center ring-violet-900 ring-2 rounded-full bg-white py-1 px-1 gap-1 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             id="user-menu-button"
             aria-expanded="false"
             aria-haspopup="true"
+
           >
             <span className="sr-only">Open user menu</span>
             <img
@@ -28,7 +29,7 @@ export default function Navbar() {
               alt="User Profile"
             />
             <p>
-              <span className="font-bold text-blue-900"><a href="https://github.com/ripa01?tab=repositories" target='_blank'>Github</a></span>
+              <span className="font-bold text-blue-900 "><a href="https://github.com/ripa01?tab=repositories" target='_blank'>Github</a></span>
             </p>
             <i className="fa-solid fa-caret-down mr-1"></i>
           </button>
