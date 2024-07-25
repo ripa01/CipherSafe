@@ -1,6 +1,6 @@
 # CipherSafe
 
-CipherSafe is a password management application built with React and Tailwind CSS. Users can manage their passwords by uploading, deleting, and viewing stored credentials in a secure and user-friendly interface.
+CipherSafe is a password management application built with React and Tailwind CSS. Users can manage their passwords by uploading, deleting and viewing stored credentials in a secure and user-friendly interface.
 
 ## Preview
 
